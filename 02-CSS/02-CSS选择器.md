@@ -31,8 +31,50 @@ CSS代码如下：
 <h4>:visited（不建议使用）</h4>
 鼠标悬点击后该元素上设置的样式
 <h4>:focus</h4>
-表单元素获得焦点后设置的样式
+表单元素获得焦点后设置的样式<br><br>
 HTML代码如下：
 <img src="./images/code-css-014.jpg">
 CSS代码如下：
 <img src="./images/code-css-015.jpg">
+运行结果：
+<img src="./images/code-css-015(1).png">
+<h1>群组选择器</h1>
+多个选择器使用同一个样式或者同一组样式。这在做CSS样式初始化，CSS框架设计以及后期CSS代码优化时会经常使用。HTML代码如下:
+<img src="./images/code-css-016.jpg">
+CSS代码如下：
+<img src="./images/code-css-017.jpg">
+运行效果：
+<img src="./images/code-css-017(1).png">
+<h1>同级元素选择器</h1>
+该选择器能选定当前选择器同级的其它指定选择器，平时虽使用的不多，但配合伪类选择器经常可以做出一些很有“新意”的效果，也能减少对JavaScript的依赖。同级元素有两种，即“+”和“~”，“+”只能选择该选择器相邻的下一个选择器，而“~”能选择该选择器后的所有同级选择器。<br>
+HTML代码如下（+）：<br>
+<img src="./images/code-css-018.jpg">
+CSS代码如下（+）：
+<img src="./images/code-css-019.jpg">
+运行效果：
+<img src="./images/code-css-019(1).png">
+HTML代码如下（~）：
+<img src="./images/code-css-020.jpg">
+CSS代码如下（~）：
+<img src="./images/code-css-021.jpg">
+运行效果：
+<img src="./images/code-css-021(1).png">
+<h1>属性选择器</h1>
+
+http://www.runoob.com/cssref/css-selectors.html
+
+该选择器所针对的既不是某个标签，也不是类名，或者ID，它是将一个标签的属性作为选择器来使用，最常用的地方就是涉及到属性多而杂的表单元素。基本写法是“[” + “属性名” + “]”的格式，该选择器的定义方式如下：
+<h4>[属性名]{...样式设置内容...}</h4>
+将标签中的一个属性作为选择选择器
+<h4>[属性名="属性值"]{...样式设置内容...}</h4>
+将标签中的一个属性名值对作为选择器
+<h4>[type^="datetime"]{...样式设置内容...}</h4>
+将标签中的一个属性名名为"type",属性值以“datetime”开头的属性名值对作为一个选择器
+<h4>[title$="picture"]{...样式设置内容...}</h4>
+将标签中的一个属性名名为“title”，属性值以“picture”结束的属性名值对作为一个选择器
+<h4>[title*="is"]{...样式设置内容...}</h4>
+将标签中的一个属性名名为“title”，属性值含有“is”的属性名值对作为一个选择器
+<h4>[title~="a"]{...样式设置内容...}</h4>
+将标签中的一个属性名名为“title”，属性值含有空格分隔的词为“a”的属性名值对作为一个选择器
+<h4>[title|="this"]{...样式设置内容...}</h4>
+将标签中的一个属性名名为“title”，属性值等于“this”或以“this”开头的属性名值对作为一个选择器
