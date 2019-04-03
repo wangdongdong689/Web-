@@ -61,3 +61,39 @@ CSS代码如下：
 <img src="./images/code-css-030.jpg">
 CSS代码如下：
 <img src="./images/code-css-031.jpg">
+运行效果：
+<img src="./images/code-css-031(1).png">
+
+由于字体风格和字体粗细，具有一定的相似性，如他们都有一个“normal”值，所以在写“font”属性组合值的时候可以省略二者之一，以辨识到的值进行设置，另外一个自动为“normal”，甚至还能省略掉第前两个值，只保留“font-size”和“font-family”如：
+<img src="./images/code-css-032.jpg">
+CSS代码如下：
+
+<img src="./images/code-css-033.jpg">
+运行效果：
+<img src="./images/code-css-033(1).png">
+
+注意：在“font”组合值的写法中，只有“font-size”和“font-family”这两个的值是不能省略的，而且是缺一不可，否则浏览器会不认识该值，对该组合值进行报错。<br><br>
+“font”属性组合值的写法，除了以上所提到的，它还有一种比较不常见，却还比较实用的写法，即可直接在“font”属性内设置文本的行高“line-height”，如下：
+<img src="./images/code-css-034.jpg">
+CSS代码如下：
+
+<img src="./images/code-css-035.jpg">
+运行结果：
+<img src="./images/code-css-035(1).png"><br><br>
+<section style="background-color: #2a1907;color: #f2ebe7;">
+<章节练习（一）>
+<div style="border-bottom: 1px dotted #fff;"></div>
+用“font”多值组合的写法制作任意四个段落的文本，具体要求如下：
+
+- 1、第一段文本为正常风格，正常粗细，16像素的“宋体”
+- 2、第二段文本为斜体风格，正常粗细，20像素的“微软雅黑”
+- 3、第三段文本为正常风格，加粗，22像素的“幼圆”
+- 4、第四段文本为斜体风格，加粗，22像素的“楷体”
+- 5、所有段落的行高是文字的1.6倍，并且不能使用“line-height”属性
+- 6、每个段落之间的间距是30像素
+
+<扩展功能>
+
+- 1、具有一个在页面中居中的，字体为普通风格、普通粗细、颜色为“#0349fc”的一级标题，字体为“微软雅黑”
+- 2、每个段落有2个字符的缩进
+</section>
