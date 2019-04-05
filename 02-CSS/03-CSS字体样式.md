@@ -80,7 +80,7 @@ CSS代码如下：
 <img src="./images/code-css-035.jpg">
 运行结果：
 <img src="./images/code-css-035(1).png"><br><br>
-<section style="background-color: #2a1907;color: #f2ebe7;">
+<!-- <section style="background-color: #2a1907;color: #f2ebe7;">
 <章节练习（一）>
 <div style="border-bottom: 1px dotted #fff;"></div>
 用“font”多值组合的写法制作任意四个段落的文本，具体要求如下：
@@ -96,4 +96,11 @@ CSS代码如下：
 
 - 1、具有一个在页面中居中的，字体为普通风格、普通粗细、颜色为“#0349fc”的一级标题，字体为“微软雅黑”
 - 2、每个段落有2个字符的缩进
-</section>
+</section> -->
+<h1>字体颜色--color</h1>
+在目前的浏览器标准中，要想改变浏览器默认字体的颜色（#000000）唯一的途径就是通过CSS的"color"属性进行设置。颜色属性可以设置4种类型的值，有以下类型：
+<h3 style="font-sze:16px;color:#2a90d1;">颜色英文单词</h3>
+可以通过颜色的英文单词直接设置文本的颜色<br>
+如"red"、"orange"、"yellow"、"green"、"cyan"、"blue"、"purple"、"pink"、"gray"、"black"和"while"等等。
+<h3 style="font-sze:16px;color:#2a90d1;">HEX（16进制颜色）</h3>
+通过"#"+16进制表示颜色，有"#"+"三位"和"#"+"六位"的形式。若是"三位"的形式，第一位表示"红",第二位表示"绿",第三位表示"蓝",通过取值区间"0-9"
