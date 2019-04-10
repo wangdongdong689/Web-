@@ -380,3 +380,94 @@ CSS代码如下：
 - <h3 style="font-sze:16px;color:#2a90d1;">pre-line</h3>
    多空格会合并成一个，但换行符会保留<br><br>
    HTML代码示例：
+   <img src="./images/code-css-052.jpg">
+   CSS代码如下：
+
+   ```
+   <!-- 空格与换行处理 -->
+   .ws-normal span{
+       white-space:normal;
+   }
+   .ws-pre span{
+       white-space:pre;
+   }
+   .ws-pre span{
+       white-space:nowrap;
+   }
+   .ws-pre span{
+       white-space:pre-wrap;
+   }
+   .ws-pre span{
+       white-space:pre-line;
+   }
+   ```
+   运行效果：
+
+   <img src="./images/white-space.png">
+   <h1>设置文本方向“direction”</h1>
+该属性是由于控制文本显示方向的，即从左往右，或从右向左。<br><br>
+在有些国家，如：“阿拉伯”、“伊朗”、“以色列”，还有古典的“中日韩”文等等，他们的文字显示方向都是从右向左的，为了适应这些文字方向的需求，如果用手工去设置，耗费的时间成本会过高，也非常容易出错，这个时候“direction”属性会帮你克服这个问题。该属性有两个值：
+- <h3 style="font-sze:16px;color:#2a90d1;">ltr</h3>
+   默认值,文本方向从左到右
+- <h3 style="font-sze:16px;color:#2a90d1;">rtl</h3>
+   文本方向从右向左<br><br>
+HTML代码示例：
+
+<img src="./images/code-css-054.jpg">
+CSS代码如下：
+
+```
+<!-- 文本显示方向 -->
+.direction-ltr{
+    direction:ltr;
+}
+.direction-rtl{
+    direction:rtl;
+}
+```
+运行效果：
+
+<img src="./images/direction.png">
+<h1>文本的裁切“text-overflow<img src="./images/css3_support.gif">”</h1>
+该属性规定当文本溢出包含元素时进行的处理。该属性主要包含两个值：
+
+- <h3 style="font-sze:16px;color:#2a90d1;">clip</h3>
+     裁切文本
+- <h3 style="font-sze:16px;color:#2a90d1;">ellipsis</h3>
+显示省略符号来代表被裁剪的文本<br><br>
+不过该属性不能单独使用，必须要配合文本换行处理属性“white-space”和内容溢出处理属性“overflow”来使用，否则会达不到所期望的效果。<br><br>
+HTML代码示例：
+
+```
+<article>
+   <P class="text-inherit">天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空伐其身行，行弗乱其所为，所以动心忍性，曾益其所不能。</P>
+   <p class="text-clip">天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空伐其身行，行弗乱其所为，所以动心忍性，曾益其所不能。</p>
+   <p class="ellipsis">天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空伐其身行，行弗乱其所为，所以动心忍性，曾益其所不能。</p>
+</article>
+```
+CSS代码如下：
+
+```
+<!-- 文本裁切 -->
+.text-inhrit,.text-clip,.text-ellipsis{
+    width:720px;
+}
+.text-inherit{
+    text-overflow:inherit;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.text-clip{
+    text-overflow:clip;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.text-ellipsis{
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+```
+运行效果：
+
+<img src="./images/text-overflow.png">
