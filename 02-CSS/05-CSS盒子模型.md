@@ -57,3 +57,17 @@ CSS代码如下：
 
 <img src="./images/width.png">
 <h1>元素高度“height”</h1>
+该属性的作用是用于设置“块级元素”和“行内块元素”的<span style="font-size:24px;color:#0b933b;">高度</span>，它绝大部分特征、度量单位和盒子模型的计算方式基本上和“width”属性一样。但在CSS的领域里，垂直方向的一些属性总是会出现一些让人“费解”的问题，如垂直居中的属性"<a href="javascript:;">vertical-align</a>","<a href="javascript:;" >margin-top和margin-bottom</a>"的重叠，<a href="javascript:;">页面内“块级元素”的首个子元素</a>（如：div > p:first-child）在执行“margin-top”时会让父元素去执行该属性，而对于它的最后一个子元素则不会产生这种情况，等等一系列的问题。<br><br>
+“width”属性的表现和“height”属性的差异在于，在同样不设置<html>或<body>宽高的条件下，任意“块级元素”和“行内块级元素”在不考虑盒子模型的前提下使用“widht”属性设置百分比（%）单位都能达到预期的效果，而<a href="javascript:;">“height”则不然</a>除非对设置了“height”属性的父级元素设置“height”属性，否则无论用多少的百分比去设置元素的高度，该元素的高度都始终为“0”。
+<h1>外间距“margin”</h1>
+“margin”我们称他为外间距，是一个<span style="font-size:24px;color:#0b933b;">具有宽高</span>样式属性的元素（即通常的“行内块元素”和“块元素”）相对于<span style="font-size:24px;color:#0b933b;">同级元素</span>和<span style="font-size:24px;color:#0b933b;">父级元素</span>的一个距离值，常用单位像素“px”。该属性对文本类元素（即“行内元素”）标签是无效的。<br><br>
+“margin”属性有四个分支属性，如下：
+
+- <h3 style="font-sze:16px;color:#2a90d1;">margin-top</h3>
+   距离上方同级元素在垂直方向的距离，若上方元素含有“margin-bottom”，则会<span style="font-size:24px;color:#0b933b;">重叠该值</span>，并且<span style="font-size:24px;color:#0b933b;">取较大值</span>作为间距值。<br><br>
+   若该元素为父元素内的首个子元素，则是设置父元素距离上方元素的距离，若上方元素含有“margin-bottom”，则同样会重叠该值，取较大值作为间距值。
+- <h3 style="font-sze:16px;color:#2a90d1;">margin-right</h3>
+    距离父级元素右边框的距离，若父元素有内间距“padding-right”,则还需要加上该值。<br><br>
+    距离右方同级元素在水平方向的距离，若右方元素含有“margin-left”，则会和该值相加，取两个元素之间间距值的<span style="font-size:24px;color:#0b933b;">和</span>作为间距值。
+- <h3 style="font-sze:16px;color:#2a90d1;">margin-bottom</h3>
+- <h3 style="font-sze:16px;color:#2a90d1;">margin-left</h3>
