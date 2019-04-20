@@ -144,3 +144,138 @@ CSS代码如下：
 
 2、“#5e98ee”色是两个<p>标签的“内间距”（该标签的背景色），里面的“#4adf2d”色不用表示出来，它表示该标签的“内容”，第一个<p>标签的内容用任意一段大于一行的文本填充即可（方便查看“内间距”值是否生效），第二个<p>标签的文本内容和第一个<p>标签内的一致，但不换行，超出的部分用“省略号”代替（必须要使用“text-overflow”进行裁切），并在该元素内垂直居中。 <img src="./images/width+height+margin+padding.jpg">-->
 <h1>元素边框“border”</h1>
+该属性的作用是为设定该属性的元素添加边框。在“标准盒子模型”中，该属性的分支属性“border-width”所设置的值会增加元素的实际宽度和高度，而在“IE盒子模型中”该属性的分支属性“border-width”所设置的值会和“padding”（若设置或标签自带该属性）共同占据内容的空间。该属性能对任何显示类型的元素设置，包括“行级元素（inline）”。<br><br>
+“border”属性有三个分支属性：
+
+- <h3 style="font-sze:16px;color:#2a90d1;">border-width</h3>
+设定边框的宽度。可以为Web技术中常用的度量单位，通常为像素“px”。<br><br>
+HTML代码部分为3个“< div>”标签，对应的CSS代码如下：
+
+```
+div{
+    width:200px;height:100px;
+    border-style:solid;
+    border-color:#333;
+    margin-right:50px;
+    float:left;
+}
+div:nth-child(1){
+    border-width:1px;
+}
+div:nth-child(2){
+    border-width:5px;
+}
+div:nth-child(3){
+    border-width:10px;
+}
+```
+运行效果：
+
+<img src="./images/border.png">
+
+- <h3 style="font-sze:16px;color:#2a90d1;">border-style</h3>
+设置边框的类型，主要有以下可以设定的值：
+
+- none，无边框
+- solid，实现边框
+- dotted，点线边框
+- dashed,虚线边框
+- double，双线边框
+- groove，3D凹槽边框
+- ridge，3D吐槽边框
+- indet，内浮雕边框
+- outset，外浮雕边框
+
+HTML代码部分为9个带文本的“< div>”标签，对应的CSS代码如下：
+
+```
+div{
+    width:200px;height:100px;
+    background-color:#ff0;
+    border-width:10px;
+    border-color:#888;
+    margin-right:50px;margin-bottom:20px;
+    box-sizing:border-box;
+    text-align:center;
+    float:left;
+}
+div:nth-child(1){
+    border-style:none;
+    line-height:100px;
+}
+```
+div:nth-child(2){border-style:solid;}
+div:nth-child(3){border-style:dotted;}
+div:nth-child(4){border-style:dashed;}
+div:nth-child(5){border-style:double;}
+div:nth-child(6){border-style:groove;}
+div:nth-child(7){border-style:ridge;}
+div:nth-child(8){border-style:inset;}
+div:nth-child(9){border-style:outset;}
+
+运行效果：
+
+<img src="./images/border-style.png">
+
+- <h3 style="font-sze:16px;color:#2a90d1;">border-color</h3>
+设置边框的颜色，可以是Web技术中常规的四种颜色值“英文单词”、“HEX”、“RGBa”和“HSLa”。<br><br>
+HTML代码部分为4个带文本的“< div>”标签，对应的CSS代码如下：
+
+```
+div{
+    width:200px;height:100px;
+    border-width:10px;
+    border-style:solid;
+    margin-right:30px;
+    box-sizing:border-box;
+    font:22px/80px "微软雅黑";
+    text-align:center;
+    float:left;
+}
+div:nth-child(1){border-color:red;}
+div:nth-child(2){border-color:#ff0;}
+div:nth-child(3){border-color:rgb(0,0,255);}
+div:nth-child(4){border-color:hsl(120,100%,50%);}
+```
+
+运行效果：
+
+<img src="./images/border-color.png">
+当然“border”属性的各个分支属性也能单独地对某个方向上的值进行设置。HTML代码部分为3个“< div>”标签，对应的CSS代码如下：
+
+```
+div{
+    width:220px;height:140px;
+    margin-right:30px;
+    box-sizing:border-box;
+    float-left;
+}
+div:nth-child(1){
+    border-top-width:5px;
+    border-right-width:10px;
+    border-bottom-width:15px;
+    border-left:20px;
+    border-style:solid;
+    border-color:#3559bc;
+}
+div:nth-child(2){
+    border-width:10px;
+    border-top-style:solid;
+    border-right-style:dotted;
+    border-bottom-style:dashed;    
+    border-left-style:none;
+    border-color:#59a70c;
+}
+div:nth-child(3){
+    border-width:10px;
+    border-style:solid;
+    border-top-color:#418ce3;
+    border-right-color:#a70c83;
+    border-bottom-color:#ebbb19;
+    border-left-color:#95704c;
+}
+```
+
+运行效果：
+
+<img src="./images/boder-color1.png">
