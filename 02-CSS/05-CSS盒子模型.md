@@ -278,4 +278,45 @@ div:nth-child(3){
 
 运行效果：
 
-<img src="./images/boder-color1.png">
+<img src="./images/boder-color1.png"><br><br>
+“border”属性也有组合值的写法，该写法也是最常使用的方式。HTML代码部分为4个“< div>”标签，对应的CSS代码如下：
+
+```
+div{
+    width:180px;height:120px;
+    margin-right:30px;
+    box-sizing:border-box;
+    float-left;
+}
+div:nth-child(1){
+    border:10px solid #a03838;
+}
+div:nth-child(2){
+    border-width:20px 15px 10px 5px;
+    border-style:solid;
+    border-color:#248924;
+}
+div:nth-child(3){
+    border-width:10px;
+    border-style:solid none dashed ridge;
+    border-color:#243f89;
+}
+div:nth-child(4){
+    border-wdith:10px;
+    border-style:solid;
+    border-color:#892466 #ffa700 #56e30b #25bfbf;
+}
+```
+运行效果：
+
+<img src="./images/border-color（1）.png"><br><br>
+除此之外，“border”还有一个很有趣的“玩”法，就是通过将元素的宽高都设为“0”，然后设置“border”的各分支属性的值将它作为一个“形状”来使用。我们来看这样一个例子：
+
+```
+div{
+    width:0;height:0;
+    margin-right:30px;
+    box-sizing:border-box;
+    float:left;
+}
+```
