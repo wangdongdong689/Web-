@@ -319,4 +319,159 @@ div{
     box-sizing:border-box;
     float:left;
 }
+div:nth-child(1){
+    border-width:20px 45px 20px 45px;
+    border-style:solid;
+    border-color:transparent #d6530d transparent #d6530d;
+}
+div:nth-child(2){
+    border-width:30px 45px 30px 45px;
+    border-style:ridge;
+    border-color:#0dd690 transparent #0dd690 transparent;
+}
+div:nth-child(3){
+    border-width:90px 45px 45px;
+    border-style:double;
+    border-color:#543fc7 transparent transparent transparent; 
+}
+div:nth-child(4){
+    border-width:30px 60px 30px 60px;
+    border-style:ridge;
+    border-color:transparent transpraent #e2187d #e2187d;
+}
 ```
+运行效果：
+
+<img src="./images/border-style(1).png">
+
+<!-- 设法用“border”属性将下面的图像在代码编辑器内实现，并在浏览器呈现：
+
+1、图形的颜色按照图示设定；
+
+2、图形的大小、倾斜角度均不限，只要图形相似即可；
+
+3、禁止使用CSS3的“transform”属性。
+
+<提示>
+
+每个图形可以由多个元素组合，并妥善利用“float”属性及它的值“left”。
+<img src="./images/layout-02.jpg"> -->
+
+<h1>圆角的盒子“border-radius”<img src="./images/css3_support.gif"></h1>
+该属性虽然带了一个“border”字样，同样也是用来设置元素的边界，但它和“border”并无太大的关系，它是对元素的“左上”、“右上”、“右下”和“左下”四个角的“圆度”进行设置。该属性能对任何显示类型的元素设置，包括“行级元素（inline）”。<br><br>
+HTML部分为为4个等宽高的< div>标签，对应的CSS代码如下：
+
+```
+div{
+    width:200px;height:100px;
+    margin-right:50px;
+    float:left;
+}
+div:nth-child(1){
+    background-color:#89051e;
+    border-radius:30px;
+}
+div:nth-child(2){
+    background-color:#248905;
+    border-radius:50px;
+}
+div:nth-child(3){
+    background-color:#053889;
+    border-radius:200px/100px;
+}
+div:nth-child(4){
+    background-color:#b20cc7;
+    border-radius:50%;
+}
+```
+运行效果：
+
+<img src="./images/border-radius.png">
+
+“border-radius”实现的原理是根据该属性所设置的值，在元素内建立一个以该值为半径的“<span style="font-size:24px;color:#0b933b;">看不见的圆</span>”，并以该圆的边缘形状来设置边角的圆度。<br><br>
+上例中“第三个< div>”中有两个值，并用“/”符号进行分割，第一个值表示<span style="font-size:24px;color:#0b933b;">水平方向</span>圆的半径，第二个表示<span style="font-size:24px;color:#0b933b;">垂直方向</span>圆的半径。<br><br>
+上例中“第四< div>”中采用的是百分比，它表示在“水平方向”设置为“width”属性50%的值，在“垂直方向”也设置为“height”属性50%的值来绘制一个“看不见的圆”来表示四个角的圆度，若对“border-radius”的值用“百分比单位”进行统一设置（即不对四个角分别进行设置的情况，这在后面会讲到），那它的上限值就是“50%”，会呈现出一个“正圆（元素的宽高相等）”或“椭圆（元素的宽高不相等）”，在此基础上再增加这个值不会看到任何变化。<br><br>
+“border-radius”属性除了能统一对元素的边角进行设置，还能分别对一个矩形元素的四个角分别进行设置，如：
+
+```
+div{
+    width:200px;height:100px;
+    margin-right:50px;
+    float:left;
+}
+div:nth-child(1){
+    background-color:#ffba00;
+    border-top-left-radius:100px;
+    border-bottom-right-radius:50px;
+    border-bottom-left-radius:30px;
+}
+div:nth-child(2){
+    background-color:#1bc2ff;
+    border-bottom-left-radius:150%;
+    border-top-right-radius:150%;
+}
+div:nth-child(3){
+    background-color:#ed64b3;
+    border-top-right-radius:50%;
+    border-bottom-right-radius:50%;
+}
+```
+运行结果：
+
+<img src="./images/border-radius（1）.png"><br><br>
+但在进行“border-radius”四个角分别设置的时候需要注意一个要点，就是设置方向一定要先是“top”或“bottom”方向，再是“left”或“right”方向，否则不能达到预期的效果。可以使用百分比单位（包括超过“50%”的百分比单位，超过150%后会将不再对选择的边角进行影响，而是对选择边角的“对角”进行影响了，这个值没有最大值，也就是一个无穷大的值，会让“对角”无限趋向一个“直角”，即让“对角”趋向一个没有设置过“border-radius”的边角的样式），但不能使用如“180px/90px”值的形式，否则该段CSS属性无效。<br><br>
+关于“border”和“border-radius”属性配合“CSS3”中新属性的更多“有趣”的玩法可以参照<a href="https://jingyan.baidu.com/article/e52e36154226ef40c70c5148.html">这个例子</a>。
+<h1>元素的轮廓“outline”</h1>
+该属性用于设置一个元素的轮廓线，和“border”不一样，“outline”无论在什么“盒子模型”下，都不会占据页面的空间，并且它不能分别去设置各个方向的值，即不能对“top”、“right”、“bottom”和“left”方向的“outline”进行分别设置，只能进行<span style="font-size:24px;color:#0b933b;">统一设置</span>。在使用“<span style="font-size:24px;color:#0b933b;">webkit</span>（老版本Chrome浏览器、Safari浏览器以及iOS和Android系统自带浏览器）”内核或“<span style="font-size:24px;color:#0b933b;">blink</span>（以新版的Chrome浏览器和Opera浏览器为代表）”内核的浏览器中，该属性会在表单元素在获得焦点后自动出现，本意是让用户获得更好的交互体验，但该设定很多时候反而会影响我们对“Web”页面的风格设置，这个时候我们都是将它的值设置为“none”。另外，“outline”属性并不受圆角属性“border-radius”的影响。<br><br>
+和“border”属性大体一致，“outline”有以下分支属性：
+
+- <h3 style="font-sze:16px;color:#2a90d1;">outline-width</h3>
+   设置轮廓线的宽度，能为Web技术中常用的度量单位，最常用的为像素“px”。
+- <h3 style="font-sze:16px;color:#2a90d1;">outline-style</h3>
+   设置轮廓线的样式，和“border-style”一致。
+- <h3 style="font-sze:16px;color:#2a90d1;">outline-color</h3>
+  设置轮廓线的颜色，和“border-color”一样支持Web的四种“颜色模式”。
+- <h3 style="font-sze:16px;color:#2a90d1;">outline-offset<img src="./images/css3_support.gif"></h3>
+  设置轮廓线相对元素边界的距离，通常以像素“px”为单位。<br><br>
+HTML代码内容为：
+
+```
+<section>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+</section>
+```
+CSS代码如下：
+```
+section{
+    margin-left:20px;
+    margin-top:20px;
+}
+div{
+    width:220px;height:140px;
+    background-color:#f5ff00;
+    float:left;
+    border-radius:50%;
+}
+div:nth-child(1){
+    outline:15px solid #af3535;
+}
+div:nth-child(2){
+    outline:20px dotted #53br3a;
+}
+div:nth-child(3){
+    outline:10px dashed #3c5aa8;
+}
+div:nth-child(4){
+    margin-top:0px;
+    margin-left:50px;
+    outline:10px ridge #c339bd;
+    outline-offset:10px;
+}
+```
+运行效果：
+
+<img src="./images/outline.png">
+<h1>可调整元素大小的“resize”<img src="./images/css3_support.gif"></h1>
