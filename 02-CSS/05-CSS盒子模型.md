@@ -142,7 +142,7 @@ CSS代码如下：
 
 1、“#fdffc1”色的部分为<body>的背景色，“#eb9bee”色部分为一个<section>标签，宽为“960像素”，高为“560像素”，内部<p>标签的宽高根据已提供数值进行计算得出；
 
-2、“#5e98ee”色是两个<p>标签的“内间距”（该标签的背景色），里面的“#4adf2d”色不用表示出来，它表示该标签的“内容”，第一个<p>标签的内容用任意一段大于一行的文本填充即可（方便查看“内间距”值是否生效），第二个<p>标签的文本内容和第一个<p>标签内的一致，但不换行，超出的部分用“省略号”代替（必须要使用“text-overflow”进行裁切），并在该元素内垂直居中。 <img src="./images/width+height+margin+padding.jpg">-->
+2、“#5e98ee”色是两个<p>标签的“内间距”（该标签的背景色），里面的“#4adf2d”色不用表示出来，它表示该标签的“内容”，第一个<p>标签的内容用任意一段大于一行的文本填充即可（方便查看“内间距”值是否生效），第二个<p>标签的文本内容和第一个<span>标签内的一致，但不换行，超出的部分用“省略号”代替（必须要使用“text-overflow”进行裁切），并在该元素内垂直居中。 <img src="./images/width+height+margin+padding.jpg">-->
 <h1>元素边框“border”</h1>
 该属性的作用是为设定该属性的元素添加边框。在“标准盒子模型”中，该属性的分支属性“border-width”所设置的值会增加元素的实际宽度和高度，而在“IE盒子模型中”该属性的分支属性“border-width”所设置的值会和“padding”（若设置或标签自带该属性）共同占据内容的空间。该属性能对任何显示类型的元素设置，包括“行级元素（inline）”。<br><br>
 “border”属性有三个分支属性：
@@ -475,3 +475,137 @@ div:nth-child(4){
 
 <img src="./images/outline.png">
 <h1>可调整元素大小的“resize”<img src="./images/css3_support.gif"></h1>
+
+该属性是用于定义“块级元素”的大小是否可以调整、以何种方式（水平方向还是垂直方向）调整，该属性需要配合属性值为“auto”、“hidden ”或“scroll”的“<span style="font-size:24px;color:#0b933b;">overflow</span>”属性使用，但被调整大小的元素的宽和高不能小于它原始的宽和高。另外，“resize”属性有个特别案例，就是能够对表单元素< textarea>使用，并且无需显示的去设置“overflow”属性。<br><br>
+讲到“resize”这个属性，不得不提到四个新的属性，“<span style="font-size:24px;color:#0b933b;">max-width</span>"和"<span style="font-size:24px;color:#0b933b;">max-height</span>",它们分别表示元素允许的“<span style="font-size:24px;color:#0b933b;">最大宽度</span>”和“<span style="font-size:24px;color:#0b933b;">最大高度</span>”，与之对应的是“<span style="font-size:24px;color:#0b933b;">min-width</span>”和“min-height”,它们分别表示元素允许的“<span style="font-size:24px;color:#0b933b;">最小宽度</span>”和“<span style="font-size:24px;color:#0b933b;">最小高度</span>”。这四个属性除了在"resize"中运用比较多，在限制< table>单元格的宽高也非常实用。<br><br>
+HTML代码内容为：
+
+```
+<section>resize:both</section>
+<section>resize:borizontal</section>
+<section>resize:vertical</section>
+<section>限制的resize:both</section>
+<textarea placeholder="我是文本域"></textarea>
+```
+CSS代码如下：
+```
+section,textarea{
+    width:180px;height:120px;
+    border:1px solid #666;
+    float:left;
+    margin-left:50px;
+    box-sizing:border-box;
+}
+section:nth-child(1){
+    resize:both;
+    overflow:auto;
+}
+section:nth-child(2){
+    resize:horizontal;
+    overflow:auto;
+}
+section:nth-child(3){
+    resize:vertical;
+    overflow:auto;
+}
+section:nth-child(4){
+    max-width:220px;
+    max-height:180px;
+    resize:both;
+    overflow:auto;
+}
+textarea{
+    resize:none;
+}
+```
+运行效果：
+
+<img src="./images/resize.png">
+<h1>元素的阴影“box-shadow<img src="./images/css3_support.gif">”</h1>
+该属性能够让元素获得一个“<span style="font-size:24px;color:#0b933b;">阴影</span>”效果，根据颜色的不同，有时候也可以叫做“<span style="font-size:24px;color:#0b933b;">发光</span>”效果。“box-shadow”属性没有分支属性，它的值是以“组合值”的形式设置的，它最多允许<span style="font-size:24px;color:#0b933b;">6个值</span>的组合，按值的顺序分别代表：
+
+- <h3 style="font-sze:16px;color:#2a90d1;">h-skewing（必要）</h3>
+  阴影在水平方向的偏移，负数是向左偏移，正数是向右偏移，单位为“px”。
+- <h3 style="font-sze:16px;color:#2a90d1;">v-skewing（必要）</h3>
+  阴影在垂直方向的偏移，负数是向上偏移，正数是向下偏移，单位为“px”。
+- <h3 style="font-sze:16px;color:#2a90d1;">blur（可选）</h3>
+  阴影的“模糊距离”或“模糊程度”，单位为“px”。
+- <h3 style="font-sze:16px;color:#2a90d1;">spread（可选）</h3> 
+  阴影的扩展范围，若将“blur”设为“0”，该值则相当于一个可以进行位置偏移但不具备“outline-offset”的“outline”，单位为“px”。
+ - <h3 style="font-sze:16px;color:#2a90d1;">color（可选）</h3>  
+   阴影的颜色，支持Web技术中的常用颜色模式：“颜色英文单词”、“HEX”、“RGBa”、“HSLa”。
+  - <h3 style="font-sze:16px;color:#2a90d1;">inset（可选）</h3>   
+   将默认向外的阴影方向改为<span style="font-size:24px;color:#0b933b;">向内</span>。<br><br>
+HTML代码内容为4个左浮动的< section>标签，对应的CSS代码如下：
+
+```
+body{
+    padding:20px;
+}
+section{
+    width:220px;height:140px;
+    border:1px solid #ddd;
+    border-radius:30px;
+    float:left;
+    margin-right:30px;
+}
+section:nth-child(1){
+    box-shadow:-10px -10px 15px #999;
+}
+section:nth-child(2){
+    box-shadow:0 10px 8px rgba(111,137,208,0.9);
+}
+section:nth-child(3){
+    box-shadow:5px 0 0 10px hsla(275,44%,48%,0.92);
+}
+section:nth-child(4){
+    box-shadow:8px 6px 16px #3e3f55 inset;
+}
+```
+运行效果：
+
+<img src="./images/box-shadow.png">
+
+“box-shadow”还能设置<span style="font-size:24px;color:#0b933b;">多组值</span>，每组值用英文","进行分割，可以让元素发出“多彩的光芒”。对应的CSS代码如下：
+
+```
+section{
+    width:220px;height:140px;
+    border:1px solid #ddd;
+    text-align:center;
+    font:24px/140px "微软雅黑";
+    border-radius:30px;
+    float:left;
+    margin-right:30px;
+    box-shadow:-15px -15px 10px rgba(234,22,22,0.8),
+    0 -10px 10px rgba(237,164,25,0.8),
+    15px -15px 10px rgba(147,237,25,0.8),
+    10px 0 10px rgba(25,237,180,0.8),
+    15px 15px 10px rgba(25,66,237,0.8),
+    0 10px 10px rgba(25,49,237,0.8),
+    -15px 15px 10px rgba(107,25,237,0.8),
+    -10px 0 10px rgba(224,35,202,0.8);
+}
+```
+运行效果：
+
+<img src="./images/box-shadow（1）.png">
+<!-- <章节练习（三）>
+用CSS代码制作一个在四个方向发出不同“光芒”的元素，并在浏览器端呈现，要求如下：
+
+1、元素的宽为“240像素”，高度为“180像素”；
+
+2、四个方向分别是元素的“左上角”、“右上角”、“右下角”和“左下角”；
+
+3、无论是水平方向还是在垂直方向偏移值都为30像素；
+
+4、颜色分别是“rgba(235, 21, 21, 0.75)”、“rgba(202, 235, 21, 0.75)”、“rgba(21, 235, 103, 0.75)”和“rgba(21, 87, 235, 0.75)”；
+
+5、元素内部有个不进行任何方向偏移，模糊距离20像素的“内发光”效果，颜色为“rgba(219, 21, 235, 0.75)”；
+
+6、让该元素在浏览器中水平和垂直方向都居中。
+
+<友情提示>
+
+为了让“box-shadow”的多组值结构更加地清晰，建议在每组值设置完成并加上“,”号之后手动进行一次换行。 -->
+
