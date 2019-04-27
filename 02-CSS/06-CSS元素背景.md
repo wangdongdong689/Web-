@@ -78,5 +78,121 @@ section:nth-child(4){
 - <h3 style="font-sze:16px;color:#2a90d1;">no-repeat</h3>   
   使背景图片不重复<br><br>
   HTML代码部分为4个< section>标签,对应的CSS代码如下：
+```
+section{
+    width:240px;heigth:160px;
+    background-image:url("./images/bgi-01.jpg");
+    background-size:20% 25%;
+    border:1px solid #999;
+    margin-right:30px;
+    float:left;
+    box-sizing:border-box;
+}
+section:nth-child(1){
+    background-repeat:repeat;
+}
+section:nth-child(2){
+    background-repeat:repeat-x;
+}
+section:nth-child(3){
+    background-repeat:repeat-y;
+}
+section:nth-child(4){
+    background-repeat:no-repeat;
+}
+```
+运行效果：
 
-  
+<img src="./images/background-repeat.png"> 
+<h1>背景图定位“background-position”</h1>
+该属性用于设置背景图片在元素内出现的位置。使用这个属性主要分为两类实际情况：第一类情况就是元素的宽高大于背景图片时，这个时候是通过“0”或“<span style="font-size:24px;color:#0b933b;">正数值</span>”去进行定位；第二类情况就是元素的宽高小于背景图片的宽高时，这个时候是通过“0”或“<span style="font-size:24px;color:#0b933b;">负数值</span>”去进行定位（这是采用 “CSS图片精灵（CSS Sprites）”技术来开发项目的时候比用的属性）。<br><br>
+该属性的值有三种形式：
+
+- <h3 style="font-sze:16px;color:#2a90d1;">方位英文单词</h3> 
+   可以有“left”、“right”、“top”、“bottom”和“center”。用法如：“left top”（默认），设置背景图在元素内的“左上方”；“right bottom”，设置背景图在元素内的“右下方”；“center center”，设置背景图在元素的“中心”。  
+- <h3 style="font-sze:16px;color:#2a90d1;">百分比单位</h3> 
+  用法如：“0% 50%”，设置背景图在元素内“水平方向”的“左方”，垂直方向的“中心”；“50% 50%”,，设置背景图在元素内的“中心”；“100% 100%”，设置背景图在元素内的“右下方”。
+- <h3 style="font-sze:16px;color:#2a90d1;">像素单位</h3> 
+  背景图的“左上角”相对于元素“左上角”偏移的距离，如“10px 20px”,设置背景图“水平向右”偏移10像素，“垂直向下”偏移20像素。<br><br>
+  这三种形式去设置背景图片的位置是可以“<span style="font-size:24px;color:#0b933b;">混搭</span>”的，如：“left 100%”、“50% 70px”、“top 30px”等。不过从代码规范性的角度出发，并不推荐这种“混搭”的方式。<br><br>
+  这是一个定位图片位置的例子，HTML代码部分为4个< section>标签,对应的CSS代码如下：
+
+  ```
+  section{
+      width:220px;height:140px;
+      background-iamge:url("./images/bgi-01.jpg");
+      background-repeat:no-repeat;
+      background-size:50% 50%;
+      border:1px solid #aaa;
+      margin-right:30px;
+      float:left;
+  }
+  section:nth-child(1){
+      background-position:center bottom;
+  }
+  section:nth-child(2){
+      background-position:100% 50%;
+  }
+  section:nth-child(3){
+      background-position:30px 45px;
+  }
+  section:nth-child(4){
+      background-position:50% center;
+  }
+  ```
+  运行效果：
+
+  <img src="./images/background-position.png"><br><br>
+  这是用“CSS Sprites”进行定位的例子，HTML代码部分为:
+
+  ```
+  <form name="background-position">
+       <button type="button">全部</button>
+       <button type="button">普通</button>
+       <button type="button">悬浮</button>
+       <button type="button">点击</button>
+       <button type="button" disabled>禁用</button>
+       <button type="button">全效</button>
+  </form>
+ CSS代码如下：
+ ```
+ button{
+     width:72px;height:32px;
+     background-color:transparent;
+     background-image:url("./images/bgi-05.png");
+     background-repeat:no-repeat;
+     border:none;outline:none;
+     font:18px "微软雅黑";color:#fff;
+     padding:0;
+     box-sizing:content-box;
+     cursor:pointer;
+ }
+ button:nth-child(1){
+     width:144px;height:64px;
+     background-posiiton:0 0;
+ }
+ button:nth-child(2){
+     background-posiiton:0 0;
+ }
+ button:nth-child(3):hover{
+     background-posiiton:-72px 0;
+ }
+ button:nth-child(4):active{
+     background-posiiton:0 -32px;
+ }
+ button:nth-child(5):disabled{
+     background-posiiton:-72px -32px;
+     color:#ddd;
+     cursor:not-allowed;
+ }
+ button:nth-child(6):hover{
+     background-posiiton:-72px 0;
+ }
+ button:nth-child(6):active{
+     background-posiiton:0 -32px;
+ }
+ ```
+ 运行结果：
+
+ <img src="./images/background-position(1).png">
+ <h1>背景图固定“background-attachment”</h1>
