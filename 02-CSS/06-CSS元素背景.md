@@ -196,3 +196,68 @@ section:nth-child(4){
 
  <img src="./images/background-position(1).png">
  <h1>背景图固定“background-attachment”</h1>
+ 通过将该属性的值设置为“<span style="font-size:24px;color:#0b933b;">fixed</span>”后，页面出现滚动条后就算页面滚动，背景图也会固定在原来的位置不会跟随页面滚动。它的默认值是“<span style="font-size:24px;color:#0b933b;">scroll</span>”，是当页面滚动的时候，背景图也跟随页面同步滚动。<br><br>
+ CSS主要代码如下:
+
+ ```
+ body{
+     background-image:url("./images/bgi-06.jpg");
+     background-repeat:no-repeat;
+     background-size:cover;
+     background-position:center center;
+     background-attachment:fixed;
+     padding:60px 0 120px;
+ }
+ article{
+     width:960px;height:auto;
+     background-color:rgba(144,129,114,0.6);
+     border-radius:15px;
+     margin:0 auto;
+     paddint:20px;
+     text-shadow:0 1px 2px rgba(83,72,62,0.9);
+     color:#fff;
+ }
+ article p{
+     text-indent:2em;
+     font:24px "楷体";
+ }
+ ```
+ <a href="https://www.aulence.com/html-pages/css/codeEffect/code-78.html">查看本例演示效果</a>
+ <h1>背景裁切范围“background-clip<img src="./images/css3_support.gif"></h1>
+ 该属性是规定背景显示的范围，是从“border”开始，是从“padding”开始，还是从“content”开始，它有以下值：
+ 
+ - <h3 style="font-sze:16px;color:#2a90d1;">border-box</h3> 
+   默认，背景的覆盖范围从“border”开始
+- <h3 style="font-sze:16px;color:#2a90d1;">padding-box</h3> 
+   背景的覆盖范围从“padding”开始
+- <h3 style="font-sze:16px;color:#2a90d1;">content-box</h3> 
+   背景的覆盖范围从“content”开始<br><br>
+HTML代码部分为3个< section>标签,对应的CSS代码如下：
+
+```
+section{
+    width:240px;height:160px;
+    background-image：url("./images/bgi-01.jpg");
+    background-repeat:no-repeat;
+    border:15px dotted #f830ca;
+    padding:15px;
+    margin-right:30px;
+    float:left;
+    box-sizing:content-box;
+}
+section:nth-child(1){
+    background-clip:border-box;
+}
+section:nth-child(2){
+    background-clip:padding-box;
+}
+section:nth-child(3){
+    background-clip:content-box;
+}
+```
+运行效果：
+
+<img src="./images/background-clip.png">
+示例中使用了背景图片“background-image”作为演示，当背景为背景色“background-color”时该属性进行的范围裁切效果也是一样的，可以自行进行效果实践。
+<h1>背景图大小“background-size<img src="./images/css3_support.gif"></h1>
+该属性用于设置背景图片的大小，主要可以通过四种类型的单位设置：
