@@ -319,3 +319,327 @@ CSS代码如下：
 
 <img src="./images/float（3）.png">
 通过上面的示例，我们可以清楚地看到，每个区块元素< section>都没有设置“height”属性，而是想通过该元素内部的子元素自动地“撑起”它的高度，内部的文本的确是撑起了这个< section>元素的高度，但是意外的是，里面的< img>元素的却超出了其父元素< section>的下边界。这是因为代码中的两个< img>元素都设置了“float”属性，第一个值的为“left”，第二个的值为“right”，都脱离了“文档流”，也就是不再占据页面内的高度了，所以出现了以上示例中的情况。要防止元素设置“float”产生的副作用，请学习下一节的内容“清除浮动副作用”。
+<h1>清除浮动副作用</h1>
+通过上一节的学习明白了设置了“float”属性元素的父元素高度会为“0”，这会对页面后续的布局带来些麻烦。要解决这一“麻烦”比较常用的有以下方式：
+
+- <h3 style="font-sze:16px;color:#2a90d1;">使用清除浮动影响的专用属性“clear”</h3>
+   该属性用于清除浮动带来父元素高度为“0”的影响，它有以下值：
+- none：默认值，不清除浮动影响
+- left：清除左浮动元素带来的影响
+- right：清除右浮动元素带来的影响
+- both：清除左右两侧浮动元素带来的影响
+
+该属性使用的方式，通常是给一个高度“height”设置为“0”的“块级元素”使用，要保证该“块级元素”内没有内容（有内容会为页面添加无用的信息），或者“visibility”属性的值为“hidden”（不能将“display”属性设置为“none”，这样元素会脱离“文档流”，也就起不到清楚浮动影响的效果了）。<br><br>
+HTML代码如下:
+
+```
+<section>
+        <ul>
+            <li>列表项1</li>
+            <li>列表项2</li>
+            <li>列表项3</li>
+            <li>列表项4</li>
+            <li>列表项5</li>
+            <div class="clear_left"></div>
+        </ul>
+    </section>
+    <section>
+        <ul>
+            <li>列表项1</li>
+            <li>列表项2</li>
+            <li>列表项3</li>
+            <li>列表项4</li>
+            <li>列表项5</li>
+            <div class="clear_right"></div>
+        </ul>
+    </section>
+    <section>
+        <ul>
+            <li>列表项1</li>
+            <li>列表项2</li>
+            <li>列表项3</li>
+            <li>列表项4</li>
+            <li>列表项5</li>
+            <div class="clear_both"></div>
+        </ul>
+    </section>
+```
+CSS代码如下:
+
+```
+       ul {
+            list-style: none;
+            margin: 0; padding: 0;
+        }
+        ul li {
+            width: 100px; height: 30px;
+            line-height: 30px;
+            color: #fff;
+            text-align: center;
+        }
+        section {
+            width: 960px;
+            border: 1px solid #ffff00;
+        }
+        section:nth-child(1) li {
+            background-color: #b20202;
+            float: left;
+        }
+        section:nth-child(2) li {
+            background-color: #0275b2;
+            float: right;
+        }
+        section:nth-child(3) li {
+            background-color: #17a712;
+            float: left;
+        }
+        .clear_left, .clear_right, .clear_both { height: 0 }
+        .clear_left { clear: left }
+        .clear_right { clear: right }
+        .clear_both { clear: both }
+```
+运行效果：
+
+<img src="./images/clear.png">
+通过上面的示例我们可以发现，通过这种方式可以成功地消除子元素浮动对父元素高度的影响，但是这样会给页面添加一些无意义的空标签，并不是很理想。
+<h3 style="font-sze:16px;color:#2a90d1;">使用绝对定位“position:absolute”</h3>
+HTML代码大致和上例相似，不过去处了添加了“clear”属性的空标签，如下：
+
+```
+<section>
+        <ul>
+            <li>列表项1</li>
+            <li>列表项2</li>
+            <li>列表项3</li>
+            <li>列表项4</li>
+            <li>列表项5</li>
+        </ul>
+    </section>
+    <section>
+        <ul>
+            <li>列表项1</li>
+            <li>列表项2</li>
+            <li>列表项3</li>
+            <li>列表项4</li>
+            <li>列表项5</li>
+        </ul>
+    </section>
+    <section>
+        <ul>
+            <li>列表项1</li>
+            <li>列表项2</li>
+            <li>列表项3</li>
+            <li>列表项4</li>
+            <li>列表项5</li>
+        </ul>
+    </section>
+```
+CSS代码如下：
+
+```
+        body {
+            height: 38px;
+        }
+        ul {
+            list-style: none;
+            margin: 0; padding: 0;
+        }
+        ul li {
+            width: 100px; height: 30px;
+            line-height: 30px;
+            color: #fff;
+            text-align: center;
+        }
+        <!-- CSS代码如下 -->
+        section {
+            width: 960px;
+            border: 1px solid #ffff00;
+        }
+        section ul {
+            position: absolute;
+            border: 1px solid #ff00ff;
+        }
+        section:nth-child(1) li {
+            background-color: #b20202;
+            float: left;
+        }
+        section:nth-child(2) li {
+            background-color: #0275b2;
+            float: right;
+        }
+        section:nth-child(3) li {
+            background-color: #17a712;
+            float: left;
+        }
+```
+运行效果：
+
+<img src="./images/position-absolute.png">
+为了便于观察效果，这次我们给< ul>标签添加了一个紫色的边框，可以发现，< li>的父级元素< ul>也有了适应子元素内容的高度，但是一个很严重的情况出现了，首先< ul>的父级元素< section>仍然没有高度，并且3个< ul>列表由于绝对定位的原因，全部重叠在一起了，显然这种做法的缺点也比较明显，就是当页面内存在多个浮动元素组的时候，此方法对布局的帮助也不大。
+<h3 style="font-sze:16px;color:#2a90d1;">裁切显示属性“overflow”</h3>
+  该属性本是用于是否裁切设定该属性的元素对未能完全显示内容，未能完全显示的内容是否在元素内生成滚动条以便于完全查看。但后来很多开发者在实际工作中发现，该属性还有一个“好处”，就是可以消除浮动元素对父级元素高度的影响，就是将该属性的值设为除了“visible”外允许的值（auto、hidden和scroll），通常是“hidden”即可使父元素适应子元素的高度。<br><br>
+HTML代码和上例完全一样，CSS代码只是将“position:absolue”改为了“overflow:hidden”，如下：
+
+```
+        ul {
+            list-style: none;
+            margin: 0; padding: 0;
+        }
+        ul li {
+            width: 100px; height: 30px;
+            line-height: 30px;
+            color: #fff;
+            text-align: center;
+        }
+        <!-- CSS主要代码 -->
+        section {
+            width: 960px;
+            border: 1px solid #ffff00;
+        }
+        section ul {
+            overflow: hidden;
+            border: 1px solid #ff00ff;
+        }
+        section:nth-child(1) li {
+            background-color: #b20202;
+            float: left;
+        }
+        section:nth-child(2) li {
+            background-color: #0275b2;
+            float: right;
+        }
+        section:nth-child(3) li {
+            background-color: #17a712;
+            float: left;
+        }
+```
+运行效果：
+
+<img src="./images/overflow-hidden.png">
+现在，不仅< li>的父元素< ul>自适应了子元素的高度，连最外层的< section>也自适应了其后代元素的高度，到目前为止也算是效果最理想的一种做法了。<br><br>
+但并不是说该方法就没有缺点了，就是当用“float”来制作具有“二级导航菜单”的导航条的时候，用“overflow”去消除浮动就会出现问题了，就是如果用它的值“hidden”的时候，“二级导航菜单”由于被“裁切”了根本不会显示；如果用“auto”或者“scroll”的时候呢，又会在导航栏下生成一个内容都显示不全的，还带难看滚动条的“不明物体”；而用“visible”这个值的时候呢，又没有达到清除浮动影响的效果。
+<h3 style="font-sze:16px;color:#2a90d1;">使用伪类元素选择器“:after”</h3>
+使用这种方法的原理和在浮动元素“同级”的末尾加上一个带有“clear”属性的“块级元素”一样，不过设置方式看上去稍微复杂一点。我们先来看一下采用这种方式的实际效果，HTML部分与之前的示例也是一致的，对应的CSS代码如下：
+
+```
+       ul {
+            list-style: none;
+            margin: 0; padding: 0;
+        }
+        ul li {
+            width: 100px; height: 30px;
+            line-height: 30px;
+            color: #fff;
+            text-align: center;
+        }
+        section {
+            width: 960px;
+            border: 1px solid #ffff00;
+        }
+        <!-- CSS主要代码 -->
+        section ul {
+            border: 1px solid #ff00ff;
+        }
+        section ul:after {
+            content: "";
+            height: 0;
+            visibility: hidden;
+            display: block;
+            clear: both;
+        }
+        section:nth-child(1) li {
+            background-color: #b20202;
+            float: left;
+        }
+        section:nth-child(2) li {
+            background-color: #0275b2;
+            float: right;
+        }
+        section:nth-child(3) li {
+            background-color: #17a712;
+            float: left;
+        }
+```
+运行效果：
+
+<img src="./images/after.png">
+通过“CSS高级选择器”,“:after”是向设置了该选择器的子元素的末尾插入“显示类型”为“inline”的内容，而且通过这种方式插入的内容是个实实在在的HTML元素，也就它具有普通HTML元素的几乎一切CSS属性，“可操作性”非常的高。<br><br>
+本例中，我们首先用该选择器必要的属性“content”插入一个任意字符（某些“高级”浏览器里也可以为“空”，但为了兼容性考虑，加上一个任意字符更加安全），然后将元素高度设置为“0”，使它不占据页面的空间，为了保证插入的那个“任意字符”不显示出来，我们还需要设置“visibility”属性的值为“hidden”。由于通过该选择器插入的内容的“显示类型”为“inline”，我们还需要将它转换为“block”。最后，也是最重要的一步，就是设置“clear”属性了。<br><br>
+该方式看似复杂，但却是目前为止清除浮动影响的最佳方式，即：在HTML不用添加无意义的空标签，不会让布局重叠，不会裁切显示元素。它唯一的缺点就是不支持老版本的浏览器（IE7及以下版本），但是随着互联网技术的发展，这些问题都不再成为问题，都交给时间去解决吧。
+<h1>定位属性“position”概述</h1>
+在HTML中，元素的布局可以通过CSS的浮动属性“float”和外间距属性“margin”，甚至是内间距属性“padding”去实现（通过将边框属性“border”的分支属性“border-color”设置为“transparent”去做布局也不是不可以），但是这些布局方式都存在着各种各样的局限性，这个时候定位属性“position”的出现绝对是对元素布局的一个非常好的补充。而且该属性对<span style="font-size:24px;color:#0b933b;">所有显示类型</span>的元素使用。<br><br>
+该属性有以下值：
+
+- <h3 style="font-sze:16px;color:#2a90d1;">static</h3>
+  默认值，采用元素默认的定位方式。
+- <h3 style="font-sze:16px;color:#2a90d1;">relative</h3>
+  使元素对其原始位置进行“相对定位”。
+- <h3 style="font-sze:16px;color:#2a90d1;">absolute</h3>
+  使元素根据父（祖先）父元素的定位情况进行“绝对定位”。
+- <h3 style="font-sze:16px;color:#2a90d1;">fixed</h3>
+   使元素相对于浏览器窗口进行“固定定位”。<br><br>
+该属性除了值为“static”的情况，通常要配合“top”、“right”、“bottom”和“left”四个属性去使用，这四个属性允许的值为Web技术中常用的长度单位，如：“像素”、“百分数”、“字符大小”、“点”等。<br><br>
+设置过定位属性的元素，有的时候会根据布局的需要出现重叠，重叠的规则是：在HTML文档中后出现的元素会出现在先出现元素的上方。若要调整元素的层级可以通过“<span style="font-size:24px;color:#0b933b;">z-index</span>”属性进行设置，该属性接受<span style="font-size:24px;color:#0b933b;">整型数值</span>作为值，值越大的，层级越高，越接近用户视觉，值越小则反之。（像一本反着翻开的书，页码越大越靠上，越容易被读者看到，页码越小则反之。）<br><br>
+z-index”属性的取值范围在“-32767”至“32767”之间，“0”为默认值。当然，我们通常不会去使用到该属性的最小或最大值，为了便于管理页面内元素的“层级关系”，通常我们都是将该属性的值设置在一个比较便于管理的区间内，如“0到10”之间。
+<h1>相对定位“position:relative”</h1>
+当一个元素的“position”属性的值为“relative”时，元素对其原始位置进行“相对定位”，但元素在“文档流”中所占据的位置仍然保留。
+
+HTML代码如下：
+```
+<section>
+        <div class="posr_l100">
+            <label>用户名：</label>
+            <input type="text">
+        </div>
+        <div class="posr_r100">
+            <label>密码：</label>
+            <input type="password">
+        </div>
+    </section>
+    <section class="posr_t-50">
+        <div>
+            <label>用户名：</label>
+            <input type="text">
+        </div>
+        <div>
+            <label class="posr_b20">密码：</label>
+            <input type="password">
+        </div>
+    </section>
+    <span class="aac">测试内容</span>
+```
+CSS代码如下：
+
+```
+        body {
+            height: 80px;
+            padding-top: 62px;
+        }
+        section {
+            float: left;
+            margin-right: 50px;
+            border: 2px solid #aaa;
+            border-radius: 15px;
+            padding: 12px 20px;
+        }
+        section div > label {
+            width: 80px;
+            display: inline-block;
+        }
+        .posr_l100,.posr_r100,.posr_t-50,.posr_b20 {
+            position: relative;
+        }
+        .posr_l100 { left: 100px; }
+        .posr_r100 { rirght: 100px; }
+        .posr_t-50 { top: -50px; }
+        .posr_b20 { bottom: 20px; }
+        .aac {
+            position: relative;
+            top: 50px; left: 50px;
+        }
+```
+运行效果：
+
+<img src="./images/position-relative.png">
+上例显示效果稍显错乱，但只是为了说明一个问题，就是参与“相对定位”的元素并不会影响到其它元素在“文档流”中的位置，而自身的“文档流”位置也正常保留了的。“相对定位”通常是用于布局相对复杂、浏览器布局差异比较大的表单元素。就是将所有< label>元素与右侧的表单元素进行垂直上对齐（vertical-align:top，该属性的值“middle”在各浏览器上也存在差异，不推荐在表单布局中使用）,然后通过设置“相对定位”的“top”属性的值来达到“视觉上”的垂直居中效果。
+<h1>绝对定位“position:absolute”</h1>
