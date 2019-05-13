@@ -182,6 +182,61 @@ min-device-aspect-ratio	定义输出设备的屏幕可见宽度与高度的最�
 /* 窗口宽度<768,设计宽度=640 */<br>
 @media screen and (max-width:767px){
 
-}
+}<br><br>
+/* 窗口宽度<640,设计宽度=480 */<br>
+@media screen and (max-width:639px){
 
+}<br><br>
+/* 窗口宽度<480,设计宽度=320 */<br>
+@media screen and (max-width:479px){
 
+}<br><br>
+/* windows UI 贴靠 */<br>
+@media screen and (-ms-view-state:snapped){
+
+}<br><br>
+/* 打印 */<br>
+@media print{
+
+}<br><br>
+<span style="color:red;">用min-width时，小的放上面大的在下面，同理如果是用max-width那么就是大的在上面，小的在下面</span>
+
+<h1>< meta name=”viewport” content=””></h1>
+<h3>1. 用media来兼容移动端所需操作</h3>
+首先我们在使用Media的时候需要先设置下面这段代码，来兼容移动设备的展示效果：<br>
+
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+```
+<h3 style="color:red;">这段代码的几个参数解释：</h3>
+<b>width = device-width：</b>宽度等于当前设备的宽度<br>
+<b>initial-scale：</b>初始的缩放比例（默认设置为1.0）<br>
+<b>minimum-scale：</b>允许用户缩放到的最小比例（默认设置为1.0）<br>
+<b>maximum-scale：</b>允许用户缩放到的最大比例（默认设置为1.0）<br>
+<b>user-scalable：</b>用户是否可以手动缩放（默认设置为no，因为我们不希望用户放大缩小页面）
+<h3 style="color:red;">如果不加此代码的话，在手机上可能不会根据类型应用css样式。</h3>
+<h1>css2多媒体查询</h1>
+<h3 style="color:red;">css2中的媒体查询</h3>
+<h3 style="color:red;">写法如下</h3>
+<b>通过媒体类型及其特征来决定到底使用哪个css文件</b><br>
+<b>如：<b>
+
+```
+<link rel="stylesheet" href="media.css" media="screen and (max-width:800px) and (min-width:700px)" >
+```
+<h3 style="color:red;">解释</h3>
+<b>如果当前设备的媒体类型为screen ，且宽度为700px--800px;的话，那么就使用media.css文件。</b><br><br>
+<span style="color:red;">如果当前媒体类型匹配了多个样式，那么仍然是按照权重和就近原则来处理。</span>
+<h1>总结</h1>
+
+- 1.概念--什么是多媒体查询？
+- 2.作用--多媒体解决的问题是什么？
+- 3.语法--多媒体查询的基本语法。
+- 4.实例--多媒体查询使用实例。
+- 5.主要媒体类型与关键字
+- 6.媒体类型特征写法及其特征列表
+- 7.媒体查询的其他写法
+- 8.pc端/移动端断点尺寸
+- 9.使用bootstrap写法
+- 10.兼容移动端，viewport
+- 11.css2中的media写法
