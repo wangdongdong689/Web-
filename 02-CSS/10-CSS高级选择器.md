@@ -158,6 +158,339 @@ CSS代码如下：
 运行效果：
 
 <img src="./images/CSS3-after.png">
-使用“:before”和“:after”伪元素选择器不仅能为指定的元素添加文字、图片和各种利用“width”、“height”、“border”制作出来的形状，甚至还能添加音频、视频这些多媒体文件，而且具有高度自定义性。
+使用“:before”和“:after”伪元素选择器不仅能为指定的元素添加文字、图片和各种利用“width”、“height”、“border”制作出来的形状，甚至还能添加音频、视频这些多媒体文件，而且具有高度自定义性。<br><br>
 
-<!-- 章节练习（一） -->
+<!-- 章节练习（一） 
+制作任意四个文本，具体要求如下：
+1、第一个文本段落需大于两行，为首字添加一个效果：字体设为22像素的“微软雅黑”字体，具有一个2像素的边框，字体颜色和边框均为红色，背景色为“#f3d5df”,字体与表框之间的内间距为2像素；
+
+2、第二个文本段落需大于两行，将首行文字的字间距设为“0.8em”24像素的“微软雅黑”字体，字体颜色为“#e910d4”，并且具有下划线；
+
+3、第三个段落文本，字数控制在4~10字内，文本水平居中。为该段落前添加一个宽高均为“32像素”背景色为“#6d2a03”圆角（border-radius）为“16像素”的形状，形状内含有一个水平垂直均居中的“炫”字。设法使该形状和段落文本水平对齐。
+
+4、第四个段落文本，字数控制在4~10字内，文本水平居中。为该段落后添加一张接近圆形的“PNG图片”，图片大小为“32*32”。设法使该图片和和段落文本水平对齐。
+
+<扩展功能>
+1、使段落三前面的“炫”字形状显示出动态的“外发光效果”（最小发光距离“5像素”，最大发光距离“20像素”，发光颜色“rgba(48, 77, 235, 0.88)”）；
+
+2、使段落四后方的图片以中心为原点进行无限的顺逆时针旋转（旋转速度自定）。
+-->
+<h1>结构性伪类选择器<img src="./images/css3_support.gif"></h1>
+<a href="http://www.w3school.com.cn/cssref/css_selectors.asp">W3C选择器</a><br><br>
+
+该类选择器主要用于当前选择器精确地通过元素“<span style="color:#0b933b;font-size:24px;">索引值”</span>或<span style="color:#0b933b;font-size:24px;">"匹配类型"</span>的索引值定位到该选择器的<span style="color:#0b933b;font-size:24px;">同级</span>指定元素。该类型选择器的格式是<span style="color:#0b933b;font-size:24px;">“基本选择器”</span>（包括“后代选择器”、“自主选择器”、“同级选择器”等）或<span style="color:#0b933b;font-size:24px;">"属性选择器"</span>（包括各种带条件的属性选择器）”+“结构性伪类选择器”的形式。“结构性伪类选择器”会增加“1”的权重，该类选择器主要有以下形式：
+<h3 style="color:#2a90d1;">:first-child</h3>
+对该类所有父元素中的首个子元素进行选择。<br><br>
+HTML代码如下：
+
+```
+<section>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </section>
+    <article>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </article>
+    <div>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </div>
+```
+CSS代码如下：
+```
+ section,article {
+            border-bottom: 1px dashed #bbb;
+        }
+        div {
+            border: none;
+        }
+        p:first-child {
+            color: #800;
+            font: x-large "华文行楷";
+        }
+```
+运行效果：
+
+<img src="./images/first-child.png">
+<h3 style="color:#2a90d1;">:last-child</h3>
+对该类所有父元素中的最后一个子元素进行选择。<br><br>
+HTML代码如下：
+
+```
+<section>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </section>
+    <article>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </article>
+    <div>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </div>
+```
+CSS代码如下：
+```
+section,article {
+            border-bottom: 1px dashed #bbb;
+        }
+        div {
+            border: none;
+        }
+        p:last-child {
+            color: #060;
+            font: x-large "华文彩云";
+        }
+```
+运行效果：
+
+<img src="./images/last-child.png">
+<h3 style="color:#2a90d1;">:first-of-type</h3>
+对该类所有父元素中的首个匹配到类型的子元素进行选择。<br><br>
+HTML代码如下：
+
+```
+    <section>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </section>
+    <article>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </article>
+    <div>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+    </div>
+```
+CSS代码如下：
+
+```
+section,article {
+            border-bottom: 1px dashed #bbb;
+        }
+        div {
+            border: none;
+        }
+        h3:first-of-type {
+            color: #046;
+            font: x-large "华文琥珀";
+        }
+        p:first-child {
+            color: #f46;
+            font: x-large "微软雅黑";
+        }
+```
+运行效果：
+
+<img src="./images/first-of-type.png">
+<h3 style="color:#2a90d1;">:last-of-type</h3>
+对该类所有父元素中的最后一个匹配到类型的子元素进行选择。<br><br>
+HTML代码如下：
+
+```
+<section>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+    </section>
+    <article>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </article>
+    <div>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+    </div>
+```
+CSS代码如下：
+
+```
+section,article {
+            border-bottom: 1px dashed #bbb;
+        }
+        div {
+            margin: 1em 0;
+            border: none;
+        }
+        h3:last-of-type {
+            color: #d45ed4;
+            font: x-large "楷体";
+        }
+        p:last-child {
+            color: #138d29;
+            font: x-large "幼圆";
+        }
+```
+运行效果：
+
+<img src="./images/last-of-type.png">
+<h3 style="color:#2a90d1;">:only-child</h3>
+对该类所有父元素中只含有唯一所匹配（不包含同级元素）的子元素进行选择。<br><br>
+HTML代码如下：
+
+```
+<section>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+    </section>
+    <article>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </article>
+    <div>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </div>
+    <section>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </section>
+```
+CSS代码如下：
+```
+ section,article,div {
+            border-bottom: 1px dashed #bbb;
+        }
+        section div {
+            border: none;
+            margin: 1em 0;
+        }
+        section:last-child {
+            border: none;
+        }
+        p:only-child {
+            color: #638d13;
+            font: xx-large "黑体";
+        }
+```
+运行效果：
+
+<img src="./images/only-child.png">
+<h3 style="color:#2a90d1;">:only-of-type</h3>
+对该类所有父元素中只含有唯一所匹配类型的子元素进行选择。<br><br>
+HTML代码如下：
+
+```
+<section>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </section>
+    <article>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+    </article>
+    <div>
+        <h3>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</h3>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+    </div>
+```
+CSS代码如下：
+```
+section,article {
+            border-bottom: 1px dashed #bbb;
+        }
+        section div, article div {
+            margin: 1em 0;
+            border: none;
+        }
+        div:last-child {
+            border: none;
+        }
+        p:only-of-type {
+            color: #550fa7;
+            font: x-large "微软雅黑";
+        }
+```
+运行效果：
+
+<img src="./images/only-of-type.png">
+<h3 style="color:#2a90d1;">:nth-child(n)</h3>
+对其父元素的第“n”个子元素进行选择，通过设置<span style="color:#0b933b;font-size:24px;">参数</span>“n”指定为第几个元素<br><br>
+HTML代码如下：
+
+```
+    <section>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+        <div>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</div>
+    </section>
+```
+CSS代码如下：
+```
+div { line-height: 1.4;}
+        div:nth-child(2), div:nth-child(4) {
+            font: 24px "微软雅黑";
+        }
+        div:nth-child(2) {
+            color: #6d9b4b;
+        }
+        div:nth-child(4) {
+            color: #9b4b86;
+        }
+```
+运行效果：
+
+<img src="./images/nth-child(n).png">
+该选择器不仅能准确的匹配到第“几”个指定类型的元素，还能对匹配类型元素的“<span style="color:#0b933b;font-size:24px;">奇偶索</span>引”值进行选择，用“奇偶索引”选择器来制作隔行变色的表格及相关场景的元素时非常高效便捷：<br><br>
+HTML代码如下：
+
+```
+<table>
+        <tr>
+            <th>编号</th><th>姓名</th><th>职位</th><th>外貌</th>
+        </tr>
+        <tr>
+            <td>rimi-001</td><td>张三</td><td>学霸</td><td>长得还比较帅</td>
+        </tr>
+        <tr>
+            <td>rimi-002</td><td>李四</td><td>学霸</td><td>长得还比较帅</td>
+        </tr>
+        <tr>
+            <td>rimi-003</td><td>王五</td><td>学霸</td><td>长得还比较帅</td>
+        </tr>
+        <tr>
+            <td>rimi-004</td><td>王麻子</td><td>学霸</td><td>长得还比较...</td>
+        </tr>
+    </table>
+```
+CSS代码如下：
+```
+table, th, td {
+            border: 1px solid #aaa;
+            line-height: 160%;
+            border-collapse: collapse;
+            text-align: center;
+            color: #fff;
+        }
+        th { width: 140px }
+        th:last-child { width: 240px }
+        table tr:nth-child(odd),table tr:nth-child(even) {
+            font: 22px "幼圆";
+        }
+        table tr:nth-child(odd) {
+            background-color: #0a2841;
+        }
+        table tr:nth-child(even) {
+            background-color: #4d1608;
+        }
+```
+运行效果：
