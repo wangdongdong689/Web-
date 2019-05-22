@@ -494,3 +494,206 @@ table, th, td {
         }
 ```
 运行效果：
+
+<img src="./images/nth-child(n)-1.png">
+除此之外，“:nth-child(n)”这个结构性伪类选择器的参数还具备运算特性，如：
+
+```
+    <section>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+    </section>
+```
+CSS代码如下:
+```
+ section {
+            width: 900px;
+        }
+        section div {
+            width: 100px; height: 40px;
+            border: 1px solid #fff;
+            background-color: #1c9877;
+            float: left;
+            box-sizing: border-box;
+        }
+        section div:nth-child(3n-1) {
+            background-color: #dec926;
+        }
+```
+运行效果：
+
+<img src="./images/nth-child(n)-2.png">
+这样的参数我们叫做“带增量计算”的参数，参数内的“n”是一个增量，它从“0”开始计数，每次“+1”。如上代码，第一生效时机是“3*0-1”（计算结果小于1），无效；第二次生效时机是“3*1-1”,为第2个；第三次生效时机是“3*2-1”，为第5个，以此类推。
+<h3 style="color:#2a90d1;">:nth-last-child(n)</h3>
+该选择器和“:nth-child(n)”的特性基本一致，唯一的不同点就是该选择器的索引值是从该选择器匹配到的元素的同级元素中的<span style="color:#0b933b;font-size:24px;">最后一个</span>开始进行计算的。主要运用范畴是，当这些标签是动态生成的，也就是说生成数量不固定的时候，用“:nth-last-child(n)”能精确的定位到同级元素中的最后一个（这里使用“:last-child”会更简便）、最后几个，或从最后开始有选择地进行计数选择。
+<h3 style="color:#2a90d1;">:nth-if-type(n)</h3>
+该选择器是对匹配标签类型的同级元素进行选择<br><br>
+HTML代码如下：
+
+```
+    <section>
+        <div></div>
+        <p></p>
+        <div></div>
+        <p></p>
+        <div></div>
+        <p></p>
+        <div></div>
+    </section>
+```
+CSS代码如下：
+```
+    section {
+            width: 900px;
+        }
+        section div,section p {
+            width: 100px; height: 40px;
+            border: 1px solid #fff;
+            background-color: #98721c;
+            float: left;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        section p:nth-of-type(2) {
+            background-color: #26de42;
+        }
+```
+运行效果：
+
+<img src="./images/nth-of-type(n).png">
+该选择器的参数设置和“:nth-child(n)”中的“n”是一样的，即既可以传进“odd”和“even”这样的奇偶数，也可以传进带有“增量计算”的参数。
+<h3 style="color:#2a90d1;">:nth-last-of-type</h3>
+该选择器和“:nth-of-type(n)”的特性基本一致，不过计算方式也和“nth-last-child(n)”一样，是从最后一个开始计数。
+<h3 style="color:#2a90d1;">:root</h3>
+该选择器选择HTML页面的根节点元素，也就是< html>标签。<br><br>
+该选择符不能选择任何其它HTML文档内的标签，只能单独使用，对应的CSS代码如下：
+
+```
+:root {
+            background: url("./images/3.png") repeat;
+        }
+```
+运行效果：
+
+<img src="./images/root.png">
+<h3 style="color:#2a90d1;">:empty</h3>
+该选择器会匹配所有，或指定基本选择器内没有元素（没有子节点）的标签元素。<br><br>
+HTML代码如下：
+
+```
+<section>
+        <div>夫君子之行...非宁静无以致远。</div>
+        <span></span>
+        <p></p>
+        <p>夫君子之行...非宁静无以致远。</p>
+    </section>
+    <section class="special">
+        <div>夫君子之行...非宁静无以致远。</div>
+        <span></span>
+        <p></p>
+        <p>夫君子之行...非宁静无以致远。</p>
+    </section>
+```
+CSS代码如下：
+```
+ :empty {
+            width: 300px; height: 32px;
+            background-color: #e3e3e3;
+            border: 2px solid #999;
+            border-radius: 12px;
+            margin: 10px 0;
+            display: block;
+        }
+        .special p:empty, .special span:empty {
+            background-color: #e33f3f;
+            border: 2px solid #710909;
+        }
+```
+运行效果：
+
+<img src="./images/empty.png">
+<h3 style="color:#2a90d1;">:target</h3>
+该选择器用于“<span style="color:#0b933b;font-size:24px;">活动锚点</span>”所指向的对象的选择。
+
+HTML代码如下:
+
+```
+<section>
+        <section>
+            <a href="#panel-1">前往panel-1</a>
+            <a href="#panel-2">前往panel-2</a>
+            <a href="#panel-3">前往panel-3</a>
+            <a href="#panel-4">前往panel-4</a>
+        </section>
+        <div id="panel-1">
+            <h2>第一首诗</h2>
+            <p>自我远行游，故庐今始归。如何廿载间，旧事都已非。曳杖过比邻，相呼寻故知。不见垂白翁，但见初长儿。我园既稍葺，我田亦就治。种秫酿美酒，拾薪煮豆糜。一笑集亲朋，相从说暌离。以之感畴昔，俯仰多所悲。人生一世中，所忧渴与饥。力耕给其用，此外更何思。便当息吾驾，皓首以为期。</p>
+        </div>
+        <div id="panel-2">
+            <h2>第二首诗</h2>
+            <p>太阳渐渐西沉，已衔着西山了，天边的晚霞也逐渐开始消散，只残留有几分黯淡的色彩，映照着远处安静的村庄是多么的孤寂，拖出那长长的影子。雾淡淡飘起，几只乌黑的乌鸦栖息在佝偻的老树上，远处的一只大雁飞掠而下，划过天际。山清水秀；霜白的小草、火红的枫叶、金黄的花朵，在风中一齐摇曳着，颜色几尽妖艳。</p>
+        </div>
+        <div id="panel-3">
+            <h2>第三首诗</h2>
+            <p>老衰哭无泪，行叹复坐嗟。荒凉鹤呜村，尚友初萌芽。当时各年少，涉世迷骊騧。中天悬明月，争欲伸手拿。朝语日再昃，夜谈更五檛。君文蚤贵重，蜀锦载胡车。离离三千首，雅正排淫哇。石碑富规制，玉策垂芬葩。简牍尤妙美，一字不可加。笑我自山野，悲君混泥沙。古称骚人穷，留与后代夸。临谁寄音信，已受南台衙。俄然被弹射，翻燎北坞畲。季也守大玉，千里畦稻麻。请登小芙蓉，万仞凌烟霞。兹游隐者事，亦用期屡差。书来病良慰，誓言指春华。秉我乌臼烛，瀹以蒋富茶。那知是绝笔，杨柳空白花。颇疑魂气升，彷佛天之涯。多生註周易，遥认草玄家。</p>
+        </div>
+        <div id="panel-4">
+            <h2>第四首诗</h2>
+            <p>林尽水源，便得一山，山有小口，仿佛若有光。便舍船，从口入。初极狭，才通人。复行数十步，豁然开朗。土地平旷，屋舍俨然，有良田美池桑竹之属。阡陌交通，鸡犬相闻。其中往来种作，男女衣着，悉如外人。黄发垂髫，并怡然自乐。</p>
+        </div>
+    </section>
+```
+CSS代码如下：
+
+```
+body {
+            background-color: #e3e3e3;
+        }
+        section {
+            width: 960px;
+            margin: 10px auto;
+        }
+        section a {
+            width: 180px; line-height: 42px;
+            background-color: #0c70cb;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+            display: inline-block
+        }
+        section a:hover {
+            background-color: #399af2;
+        }
+        section a:active {
+            background-color: #065298;
+        }
+        div {
+            width: 960px; height: auto;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            text-indent: 2em;
+            font: 32px "华文行楷";
+            color: #666;
+            box-sizing: border-box;
+        }
+        div h2 {
+            text-indent: 0;
+        }
+        div:target {
+            background-color: #fff;
+            border-color: #0c70cb;
+            color: #0c70cb;
+            box-shadow: 0 8px 8px rgba(144,146,148,0.9);
+        }
+```
+
