@@ -696,4 +696,94 @@ body {
             box-shadow: 0 8px 8px rgba(144,146,148,0.9);
         }
 ```
+<h3 style="color:#2a90d1;">:not(selector)</h3>
+该选择器是用于排除指定元素的选择器。<br><br>
+HTML代码如下：
 
+```
+   <article>
+        <p>诸子曰：</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p class="special">夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+        <p>夫君子之行,静以修身,俭以养德,非淡泊无以明志,非宁静无以致远。</p>
+    </article>
+```
+CSS代码如下:
+```
+  p:not(.special) {
+            font: 32px "华文行楷";
+            color: #976;
+        }
+```
+运行效果：
+
+<img src="./images/not(selector).png">
+
+<!-- <章节练习（二）>
+制作三个表格，具体要求如下：
+
+1、三个表格均不含“<thead>”、“<tbody>”、“<tfoot>”和“<th>”标签；
+
+2、第一个表格为6行8列，表格实现隔行背景变色效果，首行和末行背景色一致，但与其它行颜色不一样。为第一、第四，第七列添加同一个背景色；
+
+3、第二个表格为5行8列，表头横跨8列，表头字体为24像素的“微软雅黑”字体。表格实现隔行背景变色效果。第二行第三列、第二行第七列、第三行第五列、第四行第五列、第四行第一列、第四行第六列、第五行第四列单元格内容为空，其它单元格均需填充任意文本内容，并且将内容为空的单元格背景色设置为“#888”；
+
+4、第三个表格为5行8列，执行跨行背景变色和跨列背景变色效果。首行和末行、首列和末列的字体大小为其它单元格的1.4倍；
+
+5、顶部添加三个漂亮的超链接按钮（鼠标悬浮、鼠标点击均要有效果变化）。点击第一个、第二个和第三个超链接按钮时，分别让第一个、第二个和第三个表格产生“水平0偏移”，“垂直向下偏移8像素”，“模糊距离8像素”，颜色为“rgba(166,167,168,0.9)”的阴影。同一时间，有且只有一个表格产生此阴影效果；
+
+6、除了<table>标签外，其它标签内不能出现任何“Class”和“id”属性。所有表格的字体颜色为“#fff”，并且要求和背景色有区分（即能清楚辨认文本）；
+
+7、所有表格的宽度为960像素，页面水平居中，表格间上下的距离为50像素，所有单元格行高为32像素。顶部的第一个按钮需要和表格的左边缘垂直对齐，并且与页面顶部保持20像素的距离。 -->
+
+<h1>UI元素状态伪类选择器</h1>
+该类选择器的选择依据主要是页面内标签元素的状态发生改变时所触发的选择状态改变。如：表单元素的“读写状态”、“值状态”，各类元素的“选中状态”等。“UI元素状态伪类选择器”主要有以下内容：
+<h3 style="color:#2a90d1;">:read-only</h3>
+当标签元素为只读状态时，触发该选择器。通常用于“input”和“textarea”。在FireFox（火狐）浏览器中的写法为“-moz-read-only”。<br><br>
+HTML代码如下：
+
+```
+<form name="testSelector">
+        <p>
+            <label>用户名：</label>
+            <input type="text" placeholder="请输入用户名"
+            value="aulence" readonly>
+        </p>
+        <p>
+            <label>密码：</label>
+            <input type="password" placeholder="请输入密码"
+            value="rimi1234" readonly>
+        </p>
+        <p>
+            <label>验证码：</label>
+            <input type="text" placeholder="请输入验证码">
+            <img src="./images/1.jpg">
+        </p>
+    </form>
+```
+CSS代码如下：
+```
+label, img[src$=".jpg"] {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        label {
+            width: 102px;
+            text-align: right;
+        }
+        input {
+            width: 120px;
+            padding: 6px;
+            font-size: 15px;
+        }
+        input:read-only {
+            width: 220px;
+            box-shadow: inset 2px 2px 4px rgba(234, 34, 34, 0.6);
+        }
+        img[src$=".jpg"] {
+            width: 90px; height: 36px;
+        }
+```
+运行效果：
+
+<img src="./images/read-only.png">
