@@ -787,3 +787,47 @@ label, img[src$=".jpg"] {
 运行效果：
 
 <img src="./images/read-only.png">
+<h3 style="color:#2a90d1;">:read-write</h3>
+当标签元素为可写状态时，触发该选择器。通常用于“input”和“textarea”。在FireFox浏览器中的写法为“-moz-read-write”。<br><br>
+HTML代码如下：
+
+```
+<form name="testSelector">
+    <p>
+       <label>用户名：</label>
+       <input type="text" placeholder="请输入用户名" value="demo" readonly>
+    </p>
+    <p>
+       <label>密码：</label>
+       <input type="password" placeholder="请输入密码">
+    </p>
+    <p>
+       <label>验证码：</label>
+       <input type="text" placeholder="请输入验证码">
+       <img src="./images/1.jpg">
+    </p>
+</form>
+```
+CSS代码如下：
+```
+label, img[src$=".jpg"] {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        label {
+            width: 102px;
+            text-align: right;
+        }
+        input {
+            width: 120px;
+            padding: 6px;
+            font-size: 15px;
+        }
+        input:read-only {
+            width: 220px;
+            box-shadow: inset 2px 2px 4px rgba(234, 34, 34, 0.6);
+        }
+        img[src$=".jpg"] {
+            width: 90px; height: 36px;
+        }
+```
