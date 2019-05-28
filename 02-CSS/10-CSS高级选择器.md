@@ -831,3 +831,180 @@ label, img[src$=".jpg"] {
             width: 90px; height: 36px;
         }
 ```
+运行结果：
+
+<img src="./images/read-only（1）.png">
+<h3 style="color:#2a90d1;">:enabled</h3>
+当标签元素为可用状态时，触发该选择器，通常用于“input”、“select”和“textarea”。<br><br>
+HTML代码如下：
+
+```
+ <form name="testSelector">
+        <p>
+            <label>职位：</label>
+            <select>
+                <option value="0" selected>请选择...</option>
+                <option value="1">Web前端工程师</option>
+                <option value="2">Java开发工程师</option>
+                <option value="3">.NET开发工程师</option>
+                <option value="4">PHP开发工程师</option>
+            </select>
+        </p>
+        <p>
+            <label>薪资：</label>
+            <select disabled>
+                <option value="0">请选择...</option>
+                <option value="1">2000~4000</option>
+                <option value="2">4000~8000</option>
+                <option value="3">8000~12000</option>
+                <option value="4" selected>12000以上</option>
+            </select>
+        </p>
+        <p>
+            <label>描述：</label>
+            <textarea disabled
+            placeholder="请对该职位进行描述"></textarea>
+        </p>
+    </form>
+```
+CSS代码如下：
+```
+ label {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        p > label:first-child {
+            width: 102px;
+            text-align: right;
+        }
+        p:last-child label {
+            vertical-align: top;
+        }
+        select {
+            width: 220px;
+            padding: 6px;
+        }
+        textarea {
+            width: 220px; height: 100px;
+            padding: 6px;
+            box-sizing: border-box;
+            position: relative;
+            top: -4px;
+        }
+        select:enabled,textarea:enabled {
+            border: 2px solid #108110;
+            box-shadow: inset 0 0 5px #51ba51;
+        }
+```
+运行效果：
+
+<img src="./images/enabled.png">
+<h3 style="color:#2a90d1;">:disabled</h3>
+当标签元素为不可用状态时，触发该选择器，通常用于“input”、“select”和“textarea”。<br><br>
+HTML代码与上一个例子一致，修改后的CSS代码如下：
+
+```
+label {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        p > label:first-child {
+            width: 102px;
+            text-align: right;
+        }
+        p:last-child label {
+            vertical-align: top;
+        }
+        select {
+            width: 220px;
+            padding: 6px;
+        }
+        textarea {
+            width: 220px; height: 100px;
+            padding: 6px;
+            box-sizing: border-box;
+            position: relative;
+            top: -4px;
+        }
+        select:disabled,textarea:disabled {
+            border: 2px solid #b2120c;
+            box-shadow: inset 0 0 5px #f47a75;
+        }
+```
+运行效果：
+
+<img src="./images/disabled.png">
+<h3 style="color:#2a90d1;">:checked</h3>
+当表单元素的值处于“checked”（被选中）状态时，触发该选择器，通常用于< input>标签的“type”属性为“checkbox”和“radio”的表单元素。在FireFox浏览器中的写法为“-moz-checked”。<br><br>
+HTML代码如下：
+
+```
+<form name="testSelector">
+        <p>
+            <label>性别：</label>
+            <input id="secret" name="gender" checked 
+            type="radio">
+            <label for="secret">保密</label>
+            <input id="male" name="gender" 
+            type="radio">
+            <label for="male">男</label>
+            <input id="female" name="gender" 
+            type="radio">
+            <label for="female">女</label>
+        </p>
+    </form>
+```
+CSS代码如下：
+```
+label {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        p > label:first-child {
+            width: 102px;
+            text-align: right;
+        }
+        label[for] {
+            width: 56px;
+            position: relative;
+        }
+        img[src$=".jpg"] {
+            width: 90px; height: 36px;
+        }
+        input[type="radio"]:checked + label {
+            color: #2397fc;
+            font: x-large "微软雅黑";
+            position: relative;
+            top: -4px;
+        }
+```
+运行效果：
+
+<img src="./images/checked.png">
+<h3 style="color:#2a90d1;">:default</h3>
+当表单元素的值处于默认选中状态时，触发该选择器，通常用于< input>标签的"type"属性为"checkbox"和"radio"的表单元素。老版本的webkit和IE（edge）不支持该选择器，其它主流浏览器均支持选择器。
+<h3 style="color:#2a90d1;">:indeterminate</h3>
+当一个< input>标签的"type"属性为"checkbox"或"radio"的表单元素都处于“半被选中”状态时，触发该选择器。该状态选择器的值目前只能通过JavaScript进行设置。
+<h3 style="color:#2a90d1;">:selection</h3>
+该选择器是用于当页面内的各种元素被选中时所触发的样式。在FireFox浏览器中的写法为"-moz-selection",且不能用群组选择器的方式来使用。（用鼠标选择该段查看效果）
+
+<!-- <章节练习（三）>
+制作一个漂亮的导航栏，具体要求如下：
+
+1、导航栏横跨整个浏览器窗口（宽度100%），高度为60像素，需要6个宽度一致，高度为60像素的导航按钮（文本内容自定），导航按钮均匀分布在一个宽度为960像素的容器元素内，该容器元素水平居中；
+
+2、整个导航栏的背景色及按钮背景色为“#e73030”，导航按钮的默认字体颜色为“#f6e2e2”，鼠标悬浮时和被点选中的导航按钮颜色均为“#ba0505”，字体颜色为“#fff”;
+
+3、当前导航按钮在被点中时添加“选中”效果，其它已经被选中的导航按钮取消“选中”效果。
+
+<扩展练习>
+
+利用该原理，制作出一个效果和导航栏一致，但能实现多选效果的关于“前端攻城狮必备技能”复选按钮组，色彩风格自定（但必须能清晰看到被选中的效果），需要有以下按钮：
+
+1、HTML5
+
+2、CSS3
+
+3、JavaScript
+
+4、jQuery -->
